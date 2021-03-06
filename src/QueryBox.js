@@ -1,7 +1,7 @@
 import React from 'react';
 import InfoArtist from './InfoArtist';
 import InfoTracks from './InfoTracks';
-
+import './App.css';
 
 class QueryBox extends React.Component{
     
@@ -43,23 +43,23 @@ class QueryBox extends React.Component{
         
     
         const labelStyle = {
+            textAlign: 'center',
             fontSize: '24px',
             color: '#0080f3'
         };
         const optionsStyle = {
+            textAlign: 'center',
             fontSize: '24px',
             color: '#008944',
-            margin: '10%'
+            margin: '2%'
         }
         const submitStyle = {
+            textAlign: 'center',
             fontSize: '24px',
             color: '#ff8944',
-            margin: '10%',
+            margin: '2%',
             visibility: 'true'
-        }
-        if(this.state.isSubmitted === true){
-            submitStyle.visibility = false;
-          }
+        }        
     return (        
         <div>
             <form onSubmit={this.handleSubmit}>            

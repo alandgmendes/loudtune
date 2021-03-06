@@ -17,23 +17,33 @@ class InfoTracks extends React.Component {
       this.setState({value: event.target.value});
     }
   
-    handleSubmit(event) {        
-        console.log('infotracks token:' + this.props.token);
+    handleSubmit(event) {
+      let nameTrack = "";
         event.preventDefault();
-        const urlToSend = "https://api.spotify.com/v1/audio-features/" + this.state.value;
+        const urlNames = 	"https://api.spotify.com/v1/tracks/" + this.state.value;
+        const urlFeatures = "https://api.spotify.com/v1/audio-features/" + this.state.value;
+        $.ajax({
+          method: "GET",
+          dataType: "Json",
+          url: urlNames,
+          headers: {
+            Authorization: `Bearer ${this.props.token}`
+            }
+        }).then(dados => {
+          nameTrack = dados.name;          
+        });
         $.ajax({
             method: "GET",
             dataType: "Json",
-            url: urlToSend,
+            url: urlFeatures,
             headers: {
             Authorization: `Bearer ${this.props.token}`
             }
             }).then(dados => {
-                console.log(dados);
                 this.setState({
                     danceability: dados.danceability,
                     energy: dados.energy,
-                    key: dados.key,
+                    dataKey: dados.key,
                     loudness: dados.loudness,
                     mode: dados.mode,
                     speechiness: dados.speechiness,
@@ -41,11 +51,11 @@ class InfoTracks extends React.Component {
                     instrumentalness: dados.instrumentalness,
                     liveness: dados.liveness,
                     valence: dados.valence,
-                    tempo: dados.tempo
+                    tempo: dados.tempo,
+                    name: nameTrack,
+                    isSubmitted: true,
                 });
             });
-            console.log('sucesso');
-            this.setState({isSubmitted: true})
       }  
     render() {
       
@@ -57,7 +67,7 @@ class InfoTracks extends React.Component {
     const submitStyle = {
         fontSize: '24px',
         color: '#ff8944',
-        margin: '10%'
+        margin: '4%'
     }
         
       return (
@@ -65,15 +75,16 @@ class InfoTracks extends React.Component {
           <div>
             <form onSubmit={this.handleSubmit}>
                 <label style={labelStyle} >
-                    Track:
+                    Código da Música:
                     <input style={labelStyle} type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
             <input style={submitStyle} type="submit" value="Submit" />
         </form>
         {this.state.isSubmitted && <ResultsTracks 
+                                    name={this.state.name}
                                     danceability={this.state.danceability}
                                     energy={this.state.energy}
-                                    key={this.state.key}
+                                    dataKey={this.state.dataKey}
                                     loudness={this.state.loudness} 
                                     mode={this.state.mode}
                                     speechiness={this.state.speechiness}
@@ -83,6 +94,7 @@ class InfoTracks extends React.Component {
                                     valence={this.state.valence}
                                     tempo={this.state.tempo}
                                     />}
+                                   
         </div>
       );
     }

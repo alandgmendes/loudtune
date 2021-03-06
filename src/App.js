@@ -1,13 +1,12 @@
 import React from 'react';
-import './App.css';
 import QueryBox from './QueryBox';
 
 
 class App extends React.Component{
+  
   constructor(props){
     super(props);
-    const parameters = this.getHashParams();
-    console.log(parameters);
+    const parameters = this.getHashParams();    
     const token = parameters.access_token;
     this.state = {
       token : ""
@@ -29,7 +28,7 @@ class App extends React.Component{
       hashParams[e[1]] = decodeURIComponent(e[2]);
       e = r.exec(q);
     }
-    console.log(hashParams);
+    
     return hashParams;
   }
     
