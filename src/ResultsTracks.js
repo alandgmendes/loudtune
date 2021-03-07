@@ -21,6 +21,7 @@ class ResultsTracks extends React.Component{
   }
 
   render(){ 
+    console.log("o nome eh"+ this.props.name);
     const infostyle = {
       fontSize: '20px'
     }

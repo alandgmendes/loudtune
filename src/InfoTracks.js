@@ -31,6 +31,7 @@ class InfoTracks extends React.Component {
             }
         }).then(dados => {
           nameTrack = dados.name;          
+          console.log("nome:" + nameTrack);
         });
         $.ajax({
             method: "GET",

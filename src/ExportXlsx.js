@@ -46,12 +46,9 @@ const dataSet2 = [
 ];
 
 class ExportXlsx extends React.Component {
-    constructor(props){
-        super(props);
-        console.log("props: "+ props.name);
-    }
     
     render() {
+        console.log(this.props);
         return (
             <ExcelFile>
                 <ExcelSheet data={dataSet1} name="TrackFeatures">
