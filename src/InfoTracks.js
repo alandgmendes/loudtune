@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import ResultsTracks from './ResultsTracks';
 
+
 class InfoTracks extends React.Component {
     constructor(props) {
       super(props);      
@@ -95,7 +96,7 @@ class InfoTracks extends React.Component {
                                     valence={this.state.valence}
                                     tempo={this.state.tempo}
                                     />}
-                                   
+                     
         </div>
       );
     }

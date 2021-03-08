@@ -1,5 +1,5 @@
 import React from 'react';
-import ExportXlsx from './ExportXlsx';
+
 
 class ResultsTracks extends React.Component{
   constructor(props){
@@ -38,25 +38,9 @@ class ResultsTracks extends React.Component{
             <h1 style={infostyle}>instrumentalness: {this.props.instrumentalness}</h1>
             <h1 style={infostyle}>liveness: {this.props.liveness}</h1>
             <h1 style={infostyle}>valence: {this.props.valence}</h1>
-            <h1 style={infostyle}>tempo: {this.props.tempo}</h1>
-        <div>
-          <ExportXlsx name={this.state.name}
-                                    danceability={this.state.danceability}
-                                    energy={this.state.energy}
-                                    dataKey={this.state.dataKey}
-                                    loudness={this.state.loudness} 
-                                    mode={this.state.mode}
-                                    speechiness={this.state.speechiness}
-                                    accousticness={this.state.accousticness}
-                                    instrumentalness={this.state.instrumentalness}
-                                    liveness={this.state.liveness}
-                                    valence={this.state.valence}
-                                    tempo={this.state.tempo} />
-        </div> 
+            <h1 style={infostyle}>tempo: {this.props.tempo}</h1>     
         </div>
-      );
-    
-    
+      );    
   }
 }
 export default ResultsTracks;
