@@ -24,18 +24,17 @@ class QueryBox extends React.Component{
         if(this.state.value === 'Artist'){
             this.setState({
                 Artist: true,
-                Track: false,                
+                Track: false,   
+                isSubmitted: true             
             });
         };
         if(this.state.value === 'Track'){
             this.setState({
                 Artist: false,
-                Track: true
+                Track: true,
+                isSubmitted: true
             });
-        };
-        this.setState({
-            isSubmitted: true
-        });
+        }
     }
 
 
