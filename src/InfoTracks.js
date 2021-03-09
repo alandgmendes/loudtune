@@ -95,8 +95,7 @@ class InfoTracks extends React.Component {
                                     liveness={this.state.liveness}
                                     valence={this.state.valence}
                                     tempo={this.state.tempo}
-                                    />}
-                     
+                                    />}                     
         </div>
       );
     }
